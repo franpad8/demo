@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Agregar Producto {% endblock %}
+
+{% block content %}
+<br>
+{{ informacion }}
+<div class="row">
+	<div class="span6">
+		<form action="." method="POST" encType="multipart/form-data">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="Editar" />
+			<input type="reset" value="Limpiar" />
+		</form>
+	</div><!--span6-->
+	<div class="span5">
+		<img src="/media/{{producto.imagen}}"/>
+	</div>
+</div> <!--row-->
+<a class="btn btn-primary" href="javascript:window.history.go(-1)"> Regresar a la lista de Productos </a>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} Inicio - Bienvenidos {% endblock %}
+{% block content %} 
+<br> 
+<p>Esta es mi primera pagina en Django </p>
+{% if user.is_authenticated %}
+	<p> Bienvenido {{ user.username }} </p>
+	{% if user.get_profile.photo %}
+		<img class="profilephoto" src="/media/{{ user.get_profile.photo }}" width="100px" height="100px" />
+	{% endif %}
+	{% if user.get_profile.telefono %}
+		<p> Numero Tel: {{ user.get_profile.telefono }}</p>
+	{% endif %}
+{% endif %}
+{% endblock %}
+
+

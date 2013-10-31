@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Contacto...{% endblock %}
+{% block content %}
+<br>
+{% if info_enviado %}
+     Gracias por enviar un comentario, nos pondremos en contacto contigo
+
+{% else %}
+<form action="." method='POST'>
+{% csrf_token %}
+{{form.as_p}}
+<button class="btn btn-primary" type="submit">Enviar Comentario</button>
+</form>
+{% endif %}
+
+{% endblock %}
+
+

@@ -1,0 +1,124 @@
+
+html{
+	line-height: 1;
+}
+
+body{
+	font-size: 11px;
+	font-family: Tahoma, Arial, Helvetica, sans-serif; 
+	color: rgb(61, 55, 38);
+	margin:0 0 0 0;
+	padding: 0;
+	background-color: #5D5137;
+}
+
+h1, h2, h3 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color:rgb(47, 42, 29);
+
+}
+
+#header{
+	margin: 0 auto;
+	width: 1000px;
+	height:100px;
+	background: url(/media/image/img01.jpg) repeat-y left top;
+}
+
+#logo{
+	float:left;
+	width:400px;
+	padding:50px 0 0 30px;
+}
+
+#logo h1{
+	float:left;
+	width:600px;
+	margin: 0;
+	font-size:48px;
+	font-family: Arial,Helvetica,sans-serif;
+	color:rgb(255, 255, 255);
+}
+
+#menu {
+	float:right;
+	width: 550px;
+	height: 50px;
+
+}
+#menu ul{
+	float:right; 
+	list-style:none;
+	margin:0 30px 0 0;
+	padding:66px 0 0;
+}
+#menu li{
+	float:left; 
+	display: inline;
+}
+
+#menu a{display:block;
+	height:14px;
+	margin:0;
+	background:url(/media/image/img06.jpg) repeat-x left top;
+	text-decoration:none;
+	text-transform:lowercase;
+	font-family:Arial,Helvetica,sans-serif;font-size:13px;color: rgb(191, 178, 141);
+	font-weight:bold;
+	padding:10px 20px 10px 20px;
+}
+
+#wrapper {
+	width:100%;
+	margin:0;
+	padding:0;
+
+}
+
+#section
+{
+	
+	margin: 0 auto;
+	width: 1000px;
+	min-height:500px;
+	background:#BFB28D url(/media/image/img02.jpg) repeat-y left top;
+	box-shadow: 10px 13px 20px black;
+}
+#section a
+{
+	font-size: 24px;
+}
+#contenido
+{
+	padding:0px 0px 0px 30px;
+
+}
+
+
+
+
+
+#contenido h1 {
+	color:rgb(47,42,29);
+	font-size: 36px;
+	letter-spacing: -1px;
+	text-transform: lowercase;
+}
+
+input {
+	height:30px;
+	border:3px solid #00d9d9;
+	font-size:13px;
+
+}
+
+textarea {
+	width: 25%;
+	border: 3px solid #00d9d9;
+	font-size:13px;
+}
+

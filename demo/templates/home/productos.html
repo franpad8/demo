@@ -1,0 +1,60 @@
+{% extends "base.html"  %}
+{% block title %} Lista de Productos {% endblock %}
+{% block content %}
+<br>
+
+<h1 class="title">Catalogos de Productos</h1>
+{% if user.is_authenticated %}
+	<a class="btn" href="{% url 'vista_agregar_producto' %}"><i class="icon-plus"></i> Agregar nuevo </a><br>
+{% endif %}
+<br>
+{% if productos %}
+	<table class="table table-hover">
+		<theader>
+			<tr>
+				<td>Producto</td>
+				<td>Precio</td>
+				<td>Stock</td>
+			</tr>
+		</theader>
+	{% for p in productos %}
+		<tbody>
+			<tr>
+				<td>{{p.nombre}}</td>
+				<td>{{p.precio}} Bs</td>
+				<td>{{p.stock}}</td>
+				<td><a class="btn" href="/producto/{{p.id}}/"><li class="icon-search"></li>Ver</a></td>
+				<td><a class="btn" href="#"><li class="icon-shopping-cart"></li>Comprar</a></td>
+				{% if user.is_authenticated %}
+					<td><a class="btn" href="/edit/producto/{{p.id}}/"><li class="icon-pencil"></li>Editar</a></td>
+				{% endif %}
+			</tr>
+		</tbody>
+
+	{% endfor %}
+	</table>
+	<div class="pagination">
+		<ul>
+			<li><a href="/productos/page/1"> << </a></li>
+			{% if productos.has_previous %}
+				<li><a href="/productos/page/{{productos.previous_page_number}}"> Prev </a></li>
+			{% else %}
+				<li><a href="#"> Prev </a></li>
+			{% endif %}
+			{% if productos.has_next %}
+				<li><a href="/productos/page/{{productos.next_page_number}}"> Next </a></li>
+			{% else %}
+				<li><a href="#"> Next </a></li>
+			{% endif %}
+			<li><a href="/productos/page/{{productos.paginator.num_pages}}"> >> </a></li>
+	</div>
+	<br><br><br>
+	<p> Página {{productos.number}} de {{productos.paginator.num_pages}}</p>
+{% else %}
+	<h2>No existen productos activos para venta</h2>
+{% endif %}
+
+
+
+{% endblock %}
+

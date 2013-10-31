@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{% block title  %} Bienvenidos{%  endblock %} </title>
+	<link rel="stylesheet" href="/media/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" href="/media/bootstrap/css/bootstrap-responsive.css" />
+	<script src="/media/js/jquery.js"></script>
+	<script src="/media/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		$(document).on('ready', function(){
+			$.ajax({
+				type:'GET',
+				contentType:'application/json; charset=utf-8',
+				datatype:'json',
+				url:"/ws/productos/",
+				success:function(response){
+					var i = (response.length-1)-2;
+					for(i;i<=(response.length-1);i++){
+						$('#ProductosNuevos').append("<li>"+response[i].fields.nombre +"</li>")
+					}
+				}
+
+			})
+
+
+		})
+	</script>
+	<style type="text/css">
+		body{
+			padding-bottom: 40px;
+			padding-top: 60px;
+		}
+		.sidebar-nav{
+			padding: 9px 0;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<a class="brand" href="{% url 'vista_principal' %}"> Proyecto Ventas</a>
+			{% if user.is_authenticated %}
+				<p class="navbar-text pull-right">
+					Usuario {{user.username}}
+				</p>
+			{% endif %}
+			<ul class="nav">
+				<li><a href="{% url 'vista_principal' %}">Inicio </a></li>
+				<li><a href="/productos/page/1/">Productos </a></li>
+				<li><a href="{% url 'vista_contacto' %}">Contacto</a></li>
+				<li><a href="{% url 'vista_about' %}">Acerca de</a></li>
+				{% if user.is_authenticated %}
+					<li><a href='{% url "vista_logout" %}'> Cerrar Sesion </a></li>
+				{% else %}
+					<li><a href='{% url "vista_login" %}'> Iniciar Sesion </a></li>
+				{% endif %}
+			</ul>
+		</div><!--/inner-->
+	</div><!--/navbar-->
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span9">
+				<div class="hero-unit">
+					{% block content%}
+					{% endblock%}
+				</div>
+			</div>
+			<div class="span3">
+				<div class="well sidebar-nav">
+					<ul class="nav nav-list">
+						<li class="nav-header">Mi Carrito</li>
+						<br><p align="justify">
+							Carrito de Super
+						</p>
+					</ul>
+				</div><!--/well-->
+			</div><!--/span3-->
+			<div class="span3">
+				<div class="well sidebar-nav">
+					<ul class="nav nav-list"  id="ProductosNuevos">
+						<li class="nav-header">Nuevos Productos</li>
+						<br>
+					</ul>
+				</div><!--/well-->
+				<img src="/media/image/Django.png">
+			</div><!--/span3-->
+			<br>
+		</div>
+		<footer>
+			<p>&copy Open Proyect 2013
+		</footer>
+	</div>
+
+</body>
+</html>
